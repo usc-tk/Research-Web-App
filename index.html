@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniSC Road Safety Diary</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="project_css.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="text-center py-4 mt-5" style="height:200px;">
+    <img src="./images/unisc_logo.png" class="img-fluid" alt="uniscLog">
+  </div>
+  <div class="container border pb-3 " style="height:60%; width:28%;">
+    <div class="row text-end">
+      <!-- contact Admin -->
+      <div id="contactAdmin" class="col hide pt-2">
+        <!-- Button trigger modal -->
+        <a data-bs-toggle="modal" data-bs-target="#exampleModal11">
+          <image src="images/icon5.PNG" class="content-end" style="height: 50px; width: 50px;"></image>
+
+        </a>
+        <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Query</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body p-5">
+                <div class="particpnt mb-3">
+                  <label for="" class="part-code">Participant Code</label><input type="number"/>
+                </div>
+                <div class="query-div">
+                 <label for="" class="qryy">Query</label><input type="text"/>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sub">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- backbutton -->
+      <div id="backbtn" class="col hide pt-2">
+        <image src="images/backbutton.PNG" onclick="enterPage()" class="content-end" style="height: 40px; width: 40px;">
+        </image>
+      </div>
+    </div>
+    <!-- Record history -->
+    <div class="col bg-primary-subtle text-center hide pt-1  fw-bold fs-4" id="recordHeading">Record history</div>
+    <!-- first -->
+    <div class="input-text my-2">
+      <input type="text" class="form-control" placeholder="Username" id="username">
+    </div>
+    <div class="input-text my-2">
+      <input type="text" class="form-control" placeholder="Email" id="email">
+    </div>
+    <div class="grid text-center" id="enter">
+      <button type="button" class="btn btn-primary">Enter</button>
+    </div>
+    <!-- after login -->
+    <div class="container hide" style="font-weight: 600;" id="opts">
+      <div class="row gap-3" style="height:210px;">
+        <div class="col text-center">
+          Medication Information
+          <img src="./images/icon1.PNG" onclick="mediInfoPage()" style="height: 100px; width: 100px;"></img>
+        </div>
+        <div class="col text-center">
+          Driving Record
+          <img src="./images/icon2.PNG" onclick="drivingRecoPage()" style="height: 100px; width: 100px;"></img>
+        </div>
+      </div>
+      <div class="row p-2 my-3 gap-3" style="height:210px;">
+        <div class="col text-center">
+          Record History
+          <img src="./images/icon3.PNG" onclick="recordHiPage()" style="height: 100px; width: 100px;"></img>
+        </div>
+        <div class="col text-center">
+          Manual record
+          <img src="./images/icon4.PNG" onclick="manualRecoPage()" style="height: 100px; width: 100px;"></img>
+        </div>
+      </div>
+      <div class="row p-2 my-3 gap-3" style="height:210px;">
+        <div class="col text-center text-alcohol">
+          Alcohol
+          <img src="./images/icon10.PNG" onclick="alcoholinfo()" style="height: 100px; width: 100px;"></img>
+        </div>
+      </div>
+    </div>
+    <!-- medication section -->
+    <div id="medicationSign" class="hide pt-2 ps-1 fw-bold">Medication record</div>
+    <!-- Medication Information -->
+    <div class="col hide ps-3" id="typeMedi">
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="oilP"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label pe-4" for="oilP">Cannabis Oil</label>
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="leafP"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label" for="leafP">Cannabis Flower</label>
+    </div>
+    <!--Oil Medication  -->
+    <select class="form-select hide mt-3" id="oilConcen">
+      <option selected>Select Concentration in mg</option>
+      <option value="1">10mg</option>
+      <option value="2">20mg</option>
+      <option value="3">30mg</option>
+      <option value="4">40mg</option>
+    </select>
+    <select class="form-select hide mt-3" id="oilDose">
+      <option selected>Select Dose in ml</option>
+      <option value="1">0.5ml</option>
+      <option value="2">1ml</option>
+      <option value="3">2ml</option>
+      <option value="4">3ml</option>
+    </select>
+    <!--Leaf Medication -->
+    <div class="row hide mt-3 ps-3 " id="leafDose">
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="leaf1"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label pe-4" for="oilP">
+        <img src="./images/leaf1.PNG" width="110px" />0.125(One eighth) gram</label>
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="leaf2"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label" for="leafP">
+        <img src="./images/leaf2.PNG" width="115px" />0.25(One quarter) gram</label>
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="leaf1"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label pe-4" for="oilP">
+        <img src="./images/leaf3.PNG" width="125px" />0.5(One half) gram</label>
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="leaf2"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label" for="leafP">
+        <img src="./images/leaf4.PNG" width="120px" />0.75(Three quarter) gram</label>
+      <input name="myCheckbox" class="form-check-input" type="checkbox" value="" id="leaf2"
+        onclick="selectOnlyThis(this)">
+      <label class="form-check-label" for="leafP">
+        <img src="./images/leaf5.PNG" width="125px" />1 gram</label>
+    </div>
+    <!-- Medication purpose  -->
+    <select class="form-select hide mt-3 p-2" id="mediPurpose" onchange="othersPage()">
+      <option selected>Select Purpose</option>
+      <option value="1">Arthritis Pain</option>
+      <option value="2">Anxiety</option>
+      <option value="3">Cancer-related symptoms</option>
+      <option value="4">Epilepsy</option>
+      <option value="6">Insomnia</option>
+      <option value="7">Lower Back Pain</option>
+      <option value="8">Neck Pain</option>
+      <option value="9">Neuropathic Pain(Nerve Pain)</option>
+      <option value="10">Multiple Sclerosis</option>
+      <option value="11">Others</option>
+    </select>
+    <!-- others note  -->
+    <div class="input-group hide mt-3" id="othersNote">
+      <span class="input-group-text">Others</span>
+      <textarea class="form-control"></textarea>
+    </div>
+    <!-- Insert date 1 -->
+    <div class="input-group date hide pt-3 " id="datePicker1">
+      <input class="form-control" type="datetime-local">
+      <span class="input-group-addon"></span>
+      <i class="glyphicon glyphicon-calender"></i>
+      </span>
+    </div>
+    <!-- Driving section -->
+    <div id="drivingRecordSign" class="hide pt-3 ps-1 fw-bold">Driving record</div>
+    <!-- Insert date 2  -->
+    <div class="input-group date hide pt-3" id="datePicker2">
+      <div class="grid form-control pb-3">
+        <span>Start</span>
+        <input class="form-control" type="datetime-local">
+        <span class="input-group-addon"></span>
+        <i class="glyphicon glyphicon-calender"></i>
+        </span>
+      </div>
+      <div class="grid form-control pb-3">
+        <Span>End</Span>
+        <input class="form-control" type="datetime-local">
+        <span class="input-group-addon"></span>
+        <i class="glyphicon glyphicon-calender"></i>
+        </span>
+      </div>
+    </div>
+    <!-- Save button  -->
+    <div class="grid text-center hide py-2 pt-2 " id="saveB">
+      <button type="button" class="btn btn-outline-primary">Save</button>
+    </div>
+    <!-- driving record  -->
+    <div id="select" class="grid text-center pb-3 hide">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="form-select collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          Reason for Driving
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <div class="form-check">
+            <input onclick="hideOther()" class="form-check-input" type="radio" name="reasonForDriving"
+              id="workCommute">
+            <label class="form-check-label" for="workCommute">
+              Work (direct commute)
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="hideOther()" class="form-check-input" type="radio" name="reasonForDriving"
+              id="socialRecreation">
+            <label class="form-check-label" for="socialRecreation">
+              Social/Recreation
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="hideOther()" class="form-check-input" type="radio" name="reasonForDriving"
+              id="servePassenger">
+            <label class="form-check-label" for="servePassenger">
+              Serve Passenger
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="hideOther()" class="form-check-input" type="radio" name="reasonForDriving"
+              id="education">
+            <label class="form-check-label" for="education">
+              Education
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="hideOther()" class="form-check-input" type="radio" name="reasonForDriving"
+              id="shopping">
+            <label class="form-check-label" for="shopping">
+              Shopping
+            </label>
+          </div>
+          <div class="form-check">
+            <input onclick="hideOther()" class="form-check-input" type="radio" name="reasonForDriving"
+              id="personalBusiness">
+            <label class="form-check-label" for="personalBusiness">
+              Personal Business
+            </label>
+          </div>
+          <div class="form-check">
+            <input id="show_other" onclick="showOther()" class="form-check-input" type="radio"
+              name="reasonForDriving" id="others">
+            <label class="form-check-label" for="others">
+              Others
+            </label>
+          </div>
+          <input id="input_other" class="" type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- start driving button -->
+    <button type="button" class="btn btn-outline-warning btn-lg hide " id="recordBtn">Start Driving</button>
+    <!--date and timer -->
+    <div class="fs-4 fw-semibold" id="theDate"></div>
+    <div class="fs-4 fw-semibold hide" id="showTime">Start :</div>
+    <!-- stop drivint button -->
+    <button type="button" class="btn btn-warning btn-lg hide mt-3" id="stopRecordBtn">Stop Driving</button>
+   <!-- New "Alcohol" Section -->
+   <div id="alcoholSign" class="bg-primary-subtle text-center hide pt-2 ps-1 fw-bold">Alcohol Section</div>
+
+   <!-- Type of Alcohol -->
+   <div class="input-text my-2">
+     <select class="form-select hide" id="alcoholType">
+       <option selected>Select Type of Alcohol</option>
+       <option value="beer">Beer</option>
+       <option value="wine">Wine</option>
+       <option value="liquor">Spirits</option>
+     </select>
+   </div>
+ 
+   <!-- Quantity of Alcohol -->
+   <div class="input-text my-2">
+     <input type="number" class="form-control hide" placeholder="Quantity" id="alcoholQuantity">
+   </div>
+ 
+   <!-- Unit of Measurement for Alcohol -->
+   <div class="input-text my-2">
+     <select class="form-select hide" id="alcoholUnit">
+       <option selected>Select Unit</option>
+       <option value="standardDrinks">Standard Drinks</option>
+<<<<<<< HEAD
+=======
+       
+>>>>>>> b1bf212b8e5d1b0fff0d2cd7d23dd71552acdee8
+     </select>
+   </div> 
+  </div>
+  
+ 
+  <!-- History -->
+  <div class="card hide" id="records">
+    <div class="card-body">
+      <h5 class="card-title">Record number :</h5>
+      <table class="table table-bordered">
+        <tbody>
+          <!-- Row 1 -->
+          <tr>
+            <td>Type</td>
+            <td>Concentration</td>
+            <td>Dose</td>
+            <td>Purpose</td>
+            <td>Time</td>
+            <td>Driving start time</td>
+            <td>Driving end time</td>
+          </tr>
+          <!-- Row 2 -->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+          <!-- Row 3 -->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+          <!-- Row 4 -->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+          <!-- Row 5 -->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

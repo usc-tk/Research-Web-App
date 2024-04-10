@@ -1,0 +1,43 @@
+*, *::before, *::after
+{
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+
+.hide {
+    display: none;
+}
+.accordion-header .form-select:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 0.25rem #e9ecef;
+}
+.accordion-button:not(.collapsed) {
+    
+    background-color: white;
+    border: 1px solid white;
+}
+button.accordion-button.collapsed {
+    border: 1px solid #cfe2ff;
+}
+button.btn.btn-sub {
+    border: 2px solid #cfe2ff;
+}
+.part-code {
+    margin-right: 5px !important;
+}
+.qryy {
+    margin-right: 5px !important;
+}
+
+.form-check {
+    display: flex;
+}
+.form-check-input[type=radio] {
+    margin-right: 20px;
+}
+.text-alcohol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
